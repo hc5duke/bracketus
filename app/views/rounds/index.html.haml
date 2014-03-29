@@ -1,0 +1,19 @@
+%h1 Listing rounds
+
+%table
+  %tr
+    %th Bracket
+    %th
+    %th
+    %th
+
+  - @rounds.each do |round|
+    %tr
+      %td= round.bracket
+      %td= link_to 'Show', round
+      %td= link_to 'Edit', edit_round_path(round)
+      %td= link_to 'Destroy', round, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Round', new_round_path

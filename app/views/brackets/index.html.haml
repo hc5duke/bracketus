@@ -1,0 +1,25 @@
+%h1 Listing brackets
+
+%table
+  %tr
+    %th Name
+    %th Final game score
+    %th Tournament
+    %th User
+    %th
+    %th
+    %th
+
+  - @brackets.each do |bracket|
+    %tr
+      %td= bracket.name
+      %td= bracket.final_game_score
+      %td= bracket.tournament
+      %td= bracket.user
+      %td= link_to 'Show', bracket
+      %td= link_to 'Edit', edit_bracket_path(bracket)
+      %td= link_to 'Destroy', bracket, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Bracket', new_bracket_path

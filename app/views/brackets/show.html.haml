@@ -1,0 +1,35 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @bracket.name
+%p
+  %b Final game score:
+  = @bracket.final_game_score
+%p
+  %b Tournament:
+  = @bracket.tournament
+%p
+  %b User:
+  = @bracket.user
+
+= link_to 'Edit', edit_bracket_path(@bracket)
+|
+= link_to 'Back', brackets_path
+
+- 1.times do 
+  .bracket
+    .final-four
+      stuff
+    - 2.times do |reg| 
+      .region{:class => "region-#{reg}"}
+        .rounds
+          - 4.downto(0) do |i|
+            .round{:class => "round-#{i}"}
+
+              - (2**i).times do
+                .matchup
+                  .team.team-a
+                    = "a"
+                  .team.team-b
+                    = "b" 

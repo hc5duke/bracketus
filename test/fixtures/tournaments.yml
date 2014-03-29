@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  year: 1
+  selection_sunday: 2014-03-23
+
+two:
+  year: 1
+  selection_sunday: 2014-03-23

@@ -1,0 +1,94 @@
+// Place all the styles related to the brackets controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "foundation";
+
+
+
+$row-width: 100%;
+$column-gutter: rem-calc(0);
+$total-columns: 10 ;
+
+.region {
+  @include grid-column( $columns: 4) 
+}
+
+.rounnds, .bracket {
+  @include grid-row
+}
+.round {
+  @include grid-column( $columns: 2) 
+}
+$teamaHeight: 16px;  
+$teambHeight: 10px;
+$matchupMargin: 5px;
+.team {
+  height: $teamaHeight  
+}
+
+.matchup {
+  margin-bottom: $matchupMargin;
+}
+$rounds: 4;
+
+@for $j from 0 through $rounds {
+  $i: $rounds - $j;
+  .round-#{$i} {
+    padding-top: ($teamaHeight ) * pow(2, $j ) / 2;
+
+    .matchup:nth-child(1) {
+    }
+    .matchup {
+      margin-bottom: ($matchupMargin ) * pow(2, $j ) + ($teamaHeight ) * (pow(2, $j ) - 1)  ;
+      .team-b {
+        height: ($teamaHeight ) * pow(2, $j ) + ($matchupMargin ) * pow(2, $j ); 
+      }
+    }
+  }
+}
+.region, .final-four {
+    @include grid-column( $columns: 10 ) 
+  }
+
+@media #{$large-up} { 
+  .region:nth-child(3) {
+    @include grid-column( $columns: 4 ) 
+  }
+  .region:nth-child(2) {
+    @include grid-column( $columns: 4, $pull: 2 ) 
+  }
+  .final-four {
+    @include grid-column( $columns: 2, $push: 4 ) 
+  }
+  .region:nth-child(3) {
+    .team-b {
+      border-right: none;
+      border-left: solid 1px;
+    }
+    .round-5 {
+      @include grid-column( $columns: 2, $push: 8 ) 
+    }
+    .round-4 {
+      @include grid-column( $columns: 2, $push: 8 ) 
+    }
+      .round-3 {
+      @include grid-column( $columns: 2, $push: 4 ) 
+    }
+      .round-22 {
+      @include grid-column( $columns: 2, $pull: 2 ) 
+    }
+      .round-1 {
+      @include grid-column( $columns: 2, $pull: 4 ) 
+    }
+    .round-0 {
+      @include grid-column( $columns: 2, $pull: 8 ) 
+    }
+  }
+}
+
+.team {
+	border-bottom: solid 1px;
+}
+.team-b {
+	border-right: solid 1px;
+}
