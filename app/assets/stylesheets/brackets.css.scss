@@ -3,8 +3,6 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "foundation";
 
-
-
 $row-width: 100%;
 $column-gutter: rem-calc(0);
 $total-columns: 10 ;
@@ -23,11 +21,20 @@ $teamaHeight: 16px;
 $teambHeight: 10px;
 $matchupMargin: 5px;
 .team {
-  height: $teamaHeight  
+  position: relative;
+  height: $teamaHeight;
 }
 
 .matchup {
   margin-bottom: $matchupMargin;
+
+  .team select{
+    position: absolute;
+    bottom: 0;
+    height: $teamaHeight;
+    margin-bottom: 2px;
+
+  }
 }
 $rounds: 4;
 
@@ -74,9 +81,7 @@ $rounds: 4;
       .round-3 {
       @include grid-column( $columns: 2, $push: 4 ) 
     }
-      .round-22 {
-      @include grid-column( $columns: 2, $pull: 2 ) 
-    }
+
       .round-1 {
       @include grid-column( $columns: 2, $pull: 4 ) 
     }
