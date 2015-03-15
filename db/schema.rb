@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140324012902) do
+ActiveRecord::Schema.define(version: 20140401013634) do
 
   create_table "brackets", force: true do |t|
     t.string   "name"
@@ -32,6 +32,11 @@ ActiveRecord::Schema.define(version: 20140324012902) do
   end
 
   add_index "rounds", ["bracket_id"], name: "index_rounds_on_bracket_id"
+
+  create_table "seeds", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "tournaments", force: true do |t|
     t.integer  "year"

@@ -19,28 +19,51 @@
     = f.label :user
     = f.text_field :user
 
-  .bracket
+  .bracket      
     .final-four
-      stuff
-    - 2.times do |reg| 
-      .region{:class => "region-#{reg}"}
-        .rounds
-          - 4.downto(0) do |i|
-            .round{:class => "round-#{i}"}
+      .round.round-1
+        .matchup
+          .team.team-a
+            = select_tag "match"
+          .team.team-b
+            = select_tag :match
+      
+      .final.round-0
+        .matchup
+          .team.team-a
+            = select_tag "match"
+          .team.team-c
+            = select_tag :match
+          .team.team-d
+            = select_tag :match
+      .round.round-1
+        .matchup
+          .team.team-a
+            = select_tag "match"
+          .team.team-b
+            = select_tag :match
 
-              - (2**i).times do
-                .matchup
-                  - if i == 4
-                    .team.team-a
-                      = "a"
-                    .team.team-b
-                      = "b" 
-                  - else
-                    .team.team-a
-                      = select_tag "match[#{reg+i}]"
+    - 2.times do |side|
+      .side{:class => "side-#{side}"}
+        - 2.times do |reg|
+          .region{:class => "region-#{reg}"}
+            .rounds
+              - 3.downto(0) do |i|
+                .round{:class => "round-#{i+2}"}
 
-                    .team.team-b
-                      = select_tag :match
+                  - (2**i).times do
+                    .matchup
+                      - if i == 3
+                        .team.team-a
+                          = "a"
+                        .team.team-b
+                          = "b" 
+                      - else
+                        .team.team-a
+                          = select_tag "match[#{i}]"
+
+                        .team.team-b
+                          = select_tag :match
 
   .actions
     = f.submit 'Save'
