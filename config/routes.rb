@@ -1,4 +1,8 @@
 NcaaRails::Application.routes.draw do
+  resources :regions
+
+  resources :seeds
+
   resources :tournaments
 
   resources :rounds

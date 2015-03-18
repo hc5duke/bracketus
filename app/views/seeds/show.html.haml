@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Seed:
+  = @seed.seed
+%p
+  %b Team:
+  = @seed.team
+%p
+  %b Region:
+  = @seed.region
+%p
+  %b Tournament:
+  = @seed.tournament
+
+= link_to 'Edit', edit_seed_path(@seed)
+\|
+= link_to 'Back', seeds_path

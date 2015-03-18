@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150315181957) do
+ActiveRecord::Schema.define(version: 20150318022931) do
 
   create_table "brackets", force: true do |t|
     t.string   "name"
@@ -25,6 +25,16 @@ ActiveRecord::Schema.define(version: 20150315181957) do
   add_index "brackets", ["tournament_id"], name: "index_brackets_on_tournament_id"
   add_index "brackets", ["user_id"], name: "index_brackets_on_user_id"
 
+  create_table "regions", force: true do |t|
+    t.string   "name"
+    t.integer  "order"
+    t.integer  "tournament_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "regions", ["tournament_id"], name: "index_regions_on_tournament_id"
+
   create_table "rounds", force: true do |t|
     t.integer  "bracket_id"
     t.datetime "created_at"
@@ -34,9 +44,17 @@ ActiveRecord::Schema.define(version: 20150315181957) do
   add_index "rounds", ["bracket_id"], name: "index_rounds_on_bracket_id"
 
   create_table "seeds", force: true do |t|
+    t.integer  "seed"
+    t.integer  "team_id"
+    t.integer  "region_id"
+    t.integer  "tournament_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "seeds", ["region_id"], name: "index_seeds_on_region_id"
+  add_index "seeds", ["team_id"], name: "index_seeds_on_team_id"
+  add_index "seeds", ["tournament_id"], name: "index_seeds_on_tournament_id"
 
   create_table "teams", force: true do |t|
     t.string   "name"
